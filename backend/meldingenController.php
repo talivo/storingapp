@@ -2,15 +2,29 @@
 
 //Variabelen vullen
 $attractie = $_POST['attractie'];
+if(empty($attractie)) {
+    $errors[] = "Vul de attractie-naam in.";
+}
 $group = $_POST['group'];
 $capaciteit = $_POST['capaciteit']; 
+if(!is_numeric($capaciteit)) {
+    $errors[] = "Vul voor capaciteit een geldig getal in.";
+}
 if (isset($_POST['prioriteit'])) {
-    $prioriteit = 1;
+    $prioriteit = 1;;
 } else {
     $prioriteit = 0;
 }
 $melder = $_POST['melder'];
+if(empty($melder)) {
+    $errors[] = "Vul de melder-naam in.";
+}
 $overig = $_POST['overig'];
+
+if(isset($errors)) {
+    var_dump($errors);
+    die();
+}
 
 //1. Verbinding
 require_once 'conn.php';
