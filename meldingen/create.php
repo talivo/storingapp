@@ -34,12 +34,13 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="prioriteit">Melding met prioriteit: </label>
-                <input type="checkbox" name="prioriteit" id="prioriteit" class="form-input">
-            </div>
-            <div class="form-group">
                 <label for="capaciteit">Capaciteit p/uur:</label>
                 <input type="number" min="0" name="capaciteit" id="capaciteit" class="form-input">
+            </div>
+            <div class="form-group">
+                <label for="prioriteit">Prio: </label>
+                <input type="checkbox" name="prioriteit" id="prioriteit" class="form-input-prio">
+                <label for="prioriteit">Melding met prioriteit</label>
             </div>
             <div class="form-group">
                 <label for="melder">Naam melder:</label>

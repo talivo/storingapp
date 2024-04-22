@@ -31,35 +31,22 @@
             <tr>
                 <th>Achtbaan</th>
                 <th>Type</th>
-                <th>Prioriteit</th>
-                <th>Capaciteit
-                <th>Gemeld op</th>
-                </th>
+                <th>Capaciteit</th>
                 <th>Melder</th>
                 <th>Overige info</th>
+                <th>Aanpassen</th>
             </tr>
             <?php foreach ($meldingen as $melding): ?>
                 <tr>
                     <td><?php echo $melding['attractie']; ?></td>
                     <td><?php echo $melding['type']; ?></td>
-                    <td><?php 
-                    
-                    if($melding['prioriteit'] == '1') {
-                        echo 'Ja';
-                    } else {
-                        echo 'Nee';
-                    }
-                    
-                    ?></td>
                     <td><?php echo $melding['capaciteit']; ?></td>
                     <td><?php echo $melding['melder']; ?></td>
                     <td><?php echo $melding['overige_info']; ?></td>
+                    <td><a href="edit.php?id=<?php echo $melding['id'] ?>">aanpassen</a></td>
                 </tr>
             <?php endforeach; ?>
         </table>
-    </div>  
-    
-
+    </div>
 </body>
-
 </html>
