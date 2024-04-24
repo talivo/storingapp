@@ -55,15 +55,15 @@ if($action == "create"){
 }
 
 if($action == "update"){
-    //Variabelen vullen
+    $id = $_POST['id'];
     $capaciteit = $_POST['capaciteit']; 
     if(!is_numeric($capaciteit)) {
         $errors[] = "Vul voor capaciteit een geldig getal in.";
     }
     if (isset($_POST['prioriteit'])) {
-        $prioriteit = 1;;
+        $prioriteit = true;
     } else {
-        $prioriteit = 0;
+        $prioriteit = false;
     }
     $melder = $_POST['melder'];
     if(empty($melder)) {
@@ -76,26 +76,18 @@ if($action == "update"){
         die();
     }
 
-    //1. Verbinding
     require_once 'conn.php';
-
-    //2. Query
-    $query = "INSERT INTO meldingen (capaciteit, prioriteit, melder, overige_info) 
-    VALUES(:capaciteit, :prioriteit, :melder, :overig)";
-
-    //3. Prepare
+    $query = "UPDATE meldingen SET capaciteit = :capaciteit, prioriteit = :prioriteit, melder = :melder, overige_info = :overig WHERE id = :id";
     $statement = $conn->prepare($query);
-
-    //4. Execute
     $statement->execute([
-        ':capaciteit'=> $capaciteit,
-        ':prioriteit'=> $prioriteit,
-        ':melder'=> $melder,
-        ':overig'=> $overig,
+        ':capaciteit' => $capaciteit,
+        ':prioriteit' => $prioriteit,
+        ':melder' => $melder,
+        ':overig' => $overig,
+        ':id' => $id
     ]);
 
-    // Redirect naar index
-    header('Location: ../meldingen/index.php?msg=Melding opgeslagen');
+    header('Location: ../meldingen/index.php?msg=Melding is aangepast');
 }
 
 if($action == "delete"){
