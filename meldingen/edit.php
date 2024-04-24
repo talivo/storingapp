@@ -8,7 +8,7 @@
     <?php require_once '../header.php'; ?>
     <div class="container">
         <h1>Melding aanpassen</h1>
-
+        
         <?php
         require_once '../backend/conn.php';
         $id = $_GET['id'];
@@ -19,13 +19,15 @@
         ?>
 
         <form action="../backend/meldingenController.php" method="POST">
+            <input type="hidden" for="action" value="update">
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
             <div class="form-group">
                 <label for="attractie">Naam attractie:</label>
-                <label for="group"><?php echo $melding['attractie']; ?></label>
+                <?php echo $melding['attractie']; ?>
             </div>
             <div class="form-group">
-                <label for="group">Type: </label>
-                <label for="group"><?php echo $melding['type']; ?></label>
+                <label>Type: </label>
+                <?php echo $melding['type']; ?>
             </div>
             <div class="form-group">
                 <label for="capaciteit">Capaciteit p/uur:</label>
@@ -47,6 +49,8 @@
                 <textarea name="overig" id="overig" class="form-input" rows="4"><?php echo $melding['overige_info']; ?></textarea>
             </div>
             <input type="submit" value="Melding opslaan">
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
+            <input type="hidden" name="action" value="update">
         </form>
     </div>
 </body>
