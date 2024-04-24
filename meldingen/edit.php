@@ -19,8 +19,6 @@
         ?>
 
         <form action="../backend/meldingenController.php" method="POST">
-            <input type="hidden" for="action" value="update">
-            <input type="hidden" name="id" value="<?php echo $id; ?>">
             <div class="form-group">
                 <label for="attractie">Naam attractie:</label>
                 <?php echo $melding['attractie']; ?>
