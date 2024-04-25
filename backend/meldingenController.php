@@ -3,8 +3,6 @@
 $action = $_POST['action'];
 
 if($action == "create"){
-
-    //Variabelen vullen
     $attractie = $_POST['attractie'];
     if(empty($attractie)) {
         $errors[] = "Vul de attractie-naam in.";
@@ -30,17 +28,10 @@ if($action == "create"){
         die();
     }
 
-    //1. Verbinding
     require_once 'conn.php';
-
-    //2. Query
     $query = "INSERT INTO meldingen (attractie, type, capaciteit, prioriteit, melder, overige_info) 
     VALUES(:attractie, :group, :capaciteit, :prioriteit, :melder, :overig)";
-
-    //3. Prepare
     $statement = $conn->prepare($query);
-
-    //4. Execute
     $statement->execute([
         ':attractie'=> $attractie,
         ':group'=> $group,
@@ -50,7 +41,6 @@ if($action == "create"){
         ':overig'=> $overig,
     ]);
 
-    // Redirect naar index
     header('Location: ../meldingen/index.php?msg=Melding opgeslagen');
 }
 
@@ -91,5 +81,14 @@ if($action == "update"){
 }
 
 if($action == "delete"){
+    $id = $_POST['id'];
+    require_once '../backend/conn.php';
+    $query = "DELETE FROM meldingen WHERE id = :id";
+    $statement = $conn->prepare($query);
+    $statement->execute([
+        'id' => $id
+    ]);
+    $meldingen = $statement->fetchAll(PDO::FETCH_ASSOC); 
 
+    header('Location: ../meldingen/index.php?msg=Melding verwijderd');
 }
