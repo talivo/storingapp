@@ -167,6 +167,22 @@ th{
 
 /* MELDINGEN */
 
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.meldingen-en-filter{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.meldingen-en-filter select{
+  width: 175px;
+}
+
+
 .form-group{
     margin: 1rem 0;
 }

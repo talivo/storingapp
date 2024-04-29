@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    if(isset($_SESSION['user_id'])) {
+        $msg = "Je bent al ingelogd";
+        header("Location: index.php?msg=".$msg);
+        die;
+}
+?>
+
 <!doctype html>
 <html lang="nl">
 <head>

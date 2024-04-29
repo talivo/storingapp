@@ -34,6 +34,21 @@
             $statement->execute();
             $meldingen = $statement->fetchAll(PDO::FETCH_ASSOC); 
         ?>
+
+        <div class="meldingen-en-filter">
+            <p>Aantal meldingen: <strong><?php echo count($meldingen); ?></strong></p>
+            <form action="" method="GET">
+                <select name="status">
+                    <option value="">- kies een type -</option>
+                    <option value="todo">Todo</option>
+                    <option value="doing">Doing</option>
+                    <option value="done">Done</option>
+                </select>
+                <input type="submit" value="filter">
+            </form>
+        </div>
+
+
         <table>
             <tr>
                 <th>Achtbaan</th>
@@ -50,7 +65,7 @@
                     <td><?php echo $melding['capaciteit']; ?></td>
                     <td><?php echo $melding['melder']; ?></td>
                     <td><?php echo $melding['overige_info']; ?></td>
-                    <td><a href="edit.php?id=<?php echo $melding['id'] ?>">aanpassen</a></td>
+                    <td><a href="edit.php?id=<?php echo $melding['id']; ?>">aanpassen</a></td>
                 </tr>
             <?php endforeach; ?>
         </table>
