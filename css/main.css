@@ -127,6 +127,12 @@ header .container{
     align-items: center;
 }
 
+.header-login-register{
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
 .logo{
     height: 5rem;
 }
